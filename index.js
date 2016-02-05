@@ -20,7 +20,7 @@ function shouldThrowErrors(should) {
     throwErrors = should;
 }
 
-function buildFlatModule(moduleName, childDirs) {
+function buildFlatModule(moduleName, childDir) {
     var childModuleNames = [];
 
     // for each file...

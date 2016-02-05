@@ -10,7 +10,7 @@ export function shouldThrowErrors(should) {
     throwErrors = should;
 }
 
-export function buildFlatModule(moduleName, childDirs) {
+export function buildFlatModule(moduleName, childDir) {
     const childModuleNames = [];
 
     // for each file...
