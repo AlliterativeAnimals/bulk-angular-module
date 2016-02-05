@@ -1,0 +1,25 @@
+{
+  "name": "bulk-angular-module",
+  "version": "1.0.0",
+  "description": "build angular modules via bulk-require",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/babel-cli/bin/babel.js index.es6 -o index.js"
+  },
+  "author": "",
+  "license": "WTFPL",
+  "dependencies": {
+    "bulk-require": "^0.2.1"
+  },
+  "devDependencies": {
+    "angular": "1.x",
+    "babel-cli": "^6.4.5",
+    "babel-preset-stage-0": "^6.3.13",
+    "bulk-require": "0.2.x"
+  },
+  "peerDependencies": {
+    "angular": "1.x",
+    "bulk-require": "0.2.x"
+  }
+}
