@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.shouldThrowErrors = shouldThrowErrors;
+exports.buildFlatModule = buildFlatModule;
 exports.buildModule = buildModule;
 var angular = require("angular");
 
@@ -17,6 +18,36 @@ var throwErrors = false;
 
 function shouldThrowErrors(should) {
     throwErrors = should;
+}
+
+function buildFlatModule(moduleName, childDirs) {
+    var childModuleNames = [];
+
+    // for each file...
+    Object.keys(childDir).map(function (childFileName) {
+        return {
+            childFileName: childFileName,
+            childFileContents: childDir[childFileName]
+        };
+    })
+    // and extract their module names, so we can depend on them.
+    .forEach(function (childDirObject) {
+        var childFileContents = childDirObject.childFileContents;
+        var childFileName = childDirObject.childFileName;
+
+        if ((typeof childFileContents === "undefined" ? "undefined" : _typeof(childFileContents)) !== "object" || typeof childFileContents.name !== "string") {
+            var message = "Cannot find angular module name in " + childFileName;
+            if (shouldThrowErrors) {
+                throw new TypeError(message);
+            } else {
+                console.warn(message);
+            }
+        } else {
+            childModuleNames.push(childFileContents.name);
+        }
+    });
+
+    return angular.module(moduleName, childModuleNames);
 }
 
 function buildModule(moduleName, childDirs) {
