@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/babel-cli/bin/babel.js index.es6 -o index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AlliterativeAnimals/bulk-angular-module.git"
+  },
   "author": "",
   "license": "WTFPL",
   "dependencies": {
