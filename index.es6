@@ -18,7 +18,11 @@ export function buildFlatModule(moduleName, childDir) {
         .map(childFileName => (
             {
                 childFileName,
-                childFileContents: childDir[childFileName]
+                childFileContents: (
+                    (childDir[childFileName] || {}).default ?
+                        childDir[childFileName].default :
+                        childDir[childFileName]
+                )
             }
         ))
         // and extract their module names, so we can depend on them.

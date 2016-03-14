@@ -27,7 +27,7 @@ function buildFlatModule(moduleName, childDir) {
     Object.keys(childDir).map(function (childFileName) {
         return {
             childFileName: childFileName,
-            childFileContents: childDir[childFileName]
+            childFileContents: (childDir[childFileName] || {}).default ? childDir[childFileName].default : childDir[childFileName]
         };
     })
     // and extract their module names, so we can depend on them.
